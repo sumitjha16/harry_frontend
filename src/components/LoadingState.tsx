@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoadingState as InteractiveLoading } from './InteractiveLoading';
+import { InteractiveLoading } from './InteractiveLoading';
 
 interface LoadingStateProps {
   type: 'chat' | 'summary';
