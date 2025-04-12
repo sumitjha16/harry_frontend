@@ -1,5 +1,5 @@
 // api.ts - Update the API paths to include /api prefix and improve error handling
-const API_BASE_URL = 'http://127.0.0.1:8000';
+const API_BASE_URL = 'https://harrybackend.onrender.com';
 
 export const api = {
   healthCheck: async (): Promise<HealthResponse> => {
