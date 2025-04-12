@@ -51,7 +51,7 @@ export const SummaryComponent: React.FC<SummaryProps> = ({
   };
 
   return (
-    <div className="magical-card flex flex-col h-full">
+    <div className="magical-card flex flex-col h-full w-full">
       <div className="p-4 border-b border-gray-200/30 dark:border-gray-700/30 flex justify-between items-center">
         <h2 className="text-xl font-bold">Magical Encyclopedia</h2>
         <ModeToggle mode={mode} onChange={onModeChange} />
@@ -59,11 +59,11 @@ export const SummaryComponent: React.FC<SummaryProps> = ({
 
       <div className="flex-1 overflow-y-auto p-4">
         <form onSubmit={handleSubmit} className="space-y-4 mb-6">
-          <div className="flex space-x-4">
+          <div className="flex flex-col sm:flex-row gap-2 sm:space-x-4">
             <select
               value={type}
               onChange={(e) => setType(e.target.value as SummaryRequest['type'])}
-              className="magical-input"
+              className="magical-input w-full sm:w-auto"
               disabled={isLoading}
             >
               <option value="character">Character</option>
@@ -79,7 +79,7 @@ export const SummaryComponent: React.FC<SummaryProps> = ({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Enter your query..."
-              className="magical-input flex-1"
+              className="magical-input flex-1 w-full"
               disabled={isLoading}
             />
           </div>
@@ -105,7 +105,7 @@ export const SummaryComponent: React.FC<SummaryProps> = ({
               "bg-white/20 dark:bg-gray-800/30 shadow-lg"
             )}
           >
-            <h3 className="text-lg font-bold mb-2">{summary.title}</h3>
+            <h3 className="text-lg font-bold mb-2 break-words">{summary.title}</h3>
             {mode === 'structured' && hasStructuredContent(summary.content) ? (
               <div 
                 className="structured-content space-y-3"

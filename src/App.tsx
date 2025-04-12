@@ -122,7 +122,7 @@ function App() {
         {/* Main content container that starts after the header */}
         <main className="container mx-auto px-4 py-8">
           <div className="flex flex-col lg:grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2 h-[calc(100vh-10rem)]">
+            <div className="lg:col-span-2 h-[calc(100vh-10rem)] w-full">
               <Chat
                 messages={messages}
                 onSend={handleSendMessage}
@@ -132,7 +132,7 @@ function App() {
                 isLoading={chatLoading}
               />
             </div>
-            <div className="h-[calc(100vh-10rem)]">
+            <div className="h-[calc(100vh-10rem)] w-full">
               <SummaryComponent
                 onSubmit={handleSummaryRequest}
                 summary={summary}

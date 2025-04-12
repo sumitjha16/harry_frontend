@@ -46,7 +46,7 @@ export const Chat: React.FC<ChatProps> = ({
   };
 
   return (
-    <div className="magical-card flex flex-col h-full">
+    <div className="magical-card flex flex-col h-full w-full">
       <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
         <h2 className="text-xl font-bold">Magical Chat</h2>
         <ModeToggle mode={mode} onChange={onModeChange} />
@@ -61,7 +61,7 @@ export const Chat: React.FC<ChatProps> = ({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               className={cn(
-                "max-w-[80%] rounded-lg p-4 mb-4 magical-blur",
+                "max-w-[80%] rounded-lg p-4 mb-4 magical-blur break-words",
                 message.role === 'user'
                   ? "ml-auto bg-blue-600 text-white"
                   : "bg-gray-200 dark:bg-gray-700"
@@ -95,30 +95,32 @@ export const Chat: React.FC<ChatProps> = ({
       </div>
 
       <div className="border-t border-gray-200 dark:border-gray-700 p-4 sticky bottom-0 bg-white/10 backdrop-blur-sm">
-        <form onSubmit={handleSubmit} className="flex space-x-4">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 sm:space-x-4">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Cast your spell..."
-            className="magical-input flex-1"
+            className="magical-input flex-1 w-full"
             disabled={isLoading}
           />
-          <button
-            type="submit"
-            className="magical-button"
-            disabled={isLoading}
-          >
-            <Send className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            onClick={onClear}
-            className="magical-button bg-red-600"
-            disabled={isLoading}
-          >
-            <Trash2 className="h-5 w-5" />
-          </button>
+          <div className="flex space-x-2">
+            <button
+              type="submit"
+              className="magical-button flex-1 sm:flex-none"
+              disabled={isLoading}
+            >
+              <Send className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              onClick={onClear}
+              className="magical-button bg-red-600 flex-1 sm:flex-none"
+              disabled={isLoading}
+            >
+              <Trash2 className="h-5 w-5" />
+            </button>
+          </div>
         </form>
       </div>
     </div>
